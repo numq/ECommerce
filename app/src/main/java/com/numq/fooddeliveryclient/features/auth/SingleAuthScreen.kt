@@ -57,7 +57,7 @@ fun SingleAuthScreen(
                 .fillMaxWidth()
                 .padding(4.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterVertically)
+            verticalArrangement = Arrangement.Center
         ) {
             EmailField(
                 placeholder = "Email",
