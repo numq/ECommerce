@@ -10,11 +10,15 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 
 @Composable
-fun AuthScreen(auth: AuthViewModel = hiltViewModel()) {
+fun AuthScreen(vm: AuthViewModel = hiltViewModel()) {
 
     val (isSignUp, setIsSignUp) = rememberSaveable {
         mutableStateOf(false)
     }
+
+    val onSignIn: (String, String) -> Unit = vm::signIn
+    val onSignUp: (String, String) -> Unit = vm::signUp
+    val onCancelAuthentication: () -> Unit = vm::cancelAuth
 
     BoxWithConstraints(
         Modifier
@@ -27,7 +31,7 @@ fun AuthScreen(auth: AuthViewModel = hiltViewModel()) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            SingleAuthScreen(auth, isSignUp)
+            SingleAuthScreen(isSignUp, onSignIn, onSignUp, onCancelAuthentication)
             ToggleAuthMode(isSignUp, setIsSignUp)
             Spacer(Modifier.height(offset))
         }

@@ -1,7 +1,9 @@
 package com.numq.fooddeliveryclient.features.auth
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
@@ -16,8 +18,10 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun SingleAuthScreen(
-    auth: AuthViewModel,
     isSignUp: Boolean,
+    onSignIn: (String, String) -> Unit,
+    onSignUp: (String, String) -> Unit,
+    onCancelAuthentication: () -> Unit,
     validator: InputValidator = InputValidator
 ) {
     val emptyString = ""
@@ -31,6 +35,9 @@ fun SingleAuthScreen(
         mutableStateOf(emptyString)
     }
     val (fieldsAreFilled, setFieldsAreFilled) = rememberSaveable {
+        mutableStateOf(false)
+    }
+    val (authenticating, setAuthenticating) = rememberSaveable {
         mutableStateOf(false)
     }
 
@@ -82,11 +89,22 @@ fun SingleAuthScreen(
                     validator.validateString
                 )
             }
-            IconButton(onClick = {
-                if (isSignUp) auth.signUp(email, password, confirmedPassword)
-                else auth.signIn(email, password)
-            }, enabled = fieldsAreFilled) {
-                Icon(Icons.Rounded.Done, "Confirm icon")
+            if (authenticating) {
+                CircularProgressIndicator(modifier = Modifier.clickable {
+                    onCancelAuthentication()
+                    setAuthenticating(false)
+                })
+            } else {
+                IconButton(onClick = {
+                    setAuthenticating(true)
+                    if (isSignUp) {
+                        onSignUp(email, password)
+                    } else {
+                        onSignIn(email, password)
+                    }
+                }, enabled = fieldsAreFilled) {
+                    Icon(Icons.Rounded.Done, "Confirm icon")
+                }
             }
         }
     }
