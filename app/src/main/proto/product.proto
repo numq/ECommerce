@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+message Product {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  bytes imageBytes = 4;
+  float price = 5;
+  float discount = 6;
+  float weight = 7;
+  int32 quantity = 8;
+  string categoryId = 9;
+  repeated string tags = 10;
+  uint64 createdAt = 11;
+  uint64 updatedAt = 12;
+}
+
+message GetProductByIdRequest {
+  string id = 1;
+}
+
+message GetProductByIdResponse {
+  Product product = 1;
+}
+
+message GetProductsFromCategoryRequest {
+  string category_id = 1;
+  int32 skip = 2;
+  int32 limit = 3;
+}
+
+message GetProductsFromCategoryResponse {
+  repeated Product products = 1;
+}
+
+service ProductService {
+  rpc getProductById(GetProductByIdRequest) returns (GetProductByIdResponse);
+  rpc getProductsFromCategory(GetProductsFromCategoryRequest) returns (GetProductsFromCategoryResponse);
+}

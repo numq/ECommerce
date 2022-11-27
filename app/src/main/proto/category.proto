@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+message Category{
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  bytes imageBytes = 4;
+  uint64 createdAt = 5;
+  uint64 updatedAt = 6;
+}
+
+message GetCategoriesRequest {
+}
+
+message GetCategoriesResponse {
+  repeated Category categories = 1;
+}
+
+service CategoryService {
+  rpc getCategories(GetCategoriesRequest) returns (GetCategoriesResponse);
+}
