@@ -3,15 +3,16 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'com.google.protobuf'
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.numq.fooddeliveryclient"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -47,22 +48,52 @@ android {
     }
 }
 
-dependencies {
+protobuf {
+    protoc { artifact = "com.google.protobuf:protoc:$protobuf_version" }
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:$grpc_version"
+        }
+        grpckt {
+            artifact = "io.grpc:protoc-gen-grpc-kotlin:$grpc_kotlin_version:jdk8@jar"
+        }
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                java { option 'lite' }
+            }
+            task.plugins {
+                grpc { option 'lite' }
+                grpckt { option 'lite' }
+            }
+        }
+    }
+}
 
-    implementation 'androidx.core:core-ktx:1.8.0'
+dependencies {
+    implementation 'androidx.core:core-ktx:1.9.0'
     implementation "androidx.compose.ui:ui:$compose_version"
-    implementation 'androidx.compose.material:material:1.1.1'
-    implementation 'androidx.compose.material:material-icons-extended:1.1.1'
+    implementation "androidx.compose.material:material:$compose_version"
+    implementation "androidx.compose.material:material-icons-extended:$compose_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.0'
-    implementation 'androidx.activity:activity-compose:1.5.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
+    implementation 'androidx.activity:activity-compose:1.6.1'
     implementation "androidx.navigation:navigation-compose:$nav_version"
+
+    implementation("com.google.accompanist:accompanist-permissions:0.27.0")
 
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
     implementation("com.google.dagger:hilt-android:$hilt_version")
     kapt("com.google.dagger:hilt-compiler:$hilt_version")
 
     implementation("io.arrow-kt:arrow-core:1.1.2")
+
+    implementation("io.grpc:grpc-kotlin-stub:$grpc_kotlin_version")
+    implementation("io.grpc:grpc-protobuf:$grpc_version")
+    implementation("io.grpc:grpc-android:$grpc_version")
+    implementation("io.grpc:grpc-okhttp:$grpc_version")
+    implementation("com.google.protobuf:protobuf-kotlin:$protobuf_version")
 
     testImplementation "io.mockk:mockk:$mockk_version"
     androidTestImplementation "io.mockk:mockk-android:$mockk_version"
