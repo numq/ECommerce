@@ -11,7 +11,7 @@ import com.numq.fooddeliveryclient.core.ui.theme.FoodDeliveryClientTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class RouteActivity : ComponentActivity() {
+class NavActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
