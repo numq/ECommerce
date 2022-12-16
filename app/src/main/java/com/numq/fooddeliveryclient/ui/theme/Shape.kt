@@ -1,4 +1,4 @@
-package com.numq.fooddeliveryclient.core.ui.theme
+package com.numq.fooddeliveryclient.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes
