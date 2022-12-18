@@ -95,6 +95,8 @@ dependencies {
     implementation("io.grpc:grpc-okhttp:$grpc_version")
     implementation("com.google.protobuf:protobuf-kotlin:$protobuf_version")
 
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
+
     testImplementation "io.mockk:mockk:$mockk_version"
     androidTestImplementation "io.mockk:mockk-android:$mockk_version"
     testImplementation 'junit:junit:4.13.2'
