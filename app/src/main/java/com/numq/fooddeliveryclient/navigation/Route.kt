@@ -10,7 +10,6 @@ sealed class Route private constructor(
     val args: NavArgs? = null
 ) {
     object Auth : Route("auth")
-    object Root : Route("root/id")
     object Catalog : Route("catalog")
     object Category : Route("category")
     object Cart : Route("cart")
