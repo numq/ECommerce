@@ -1,4 +1,4 @@
-package com.numq.fooddeliveryclient.ui.theme
+package com.numq.ecommerce.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
@@ -29,7 +29,7 @@ private val LightColorPalette = lightColors(
 )
 
 @Composable
-fun FoodDeliveryClientTheme(
+fun ECommerceTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {

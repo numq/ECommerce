@@ -1,4 +1,4 @@
-package com.numq.fooddeliveryclient.application
+package com.numq.ecommerce.application
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

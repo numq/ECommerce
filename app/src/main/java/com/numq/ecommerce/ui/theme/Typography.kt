@@ -1,4 +1,4 @@
-package com.numq.fooddeliveryclient.ui.theme
+package com.numq.ecommerce.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
