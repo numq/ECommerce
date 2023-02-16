@@ -1,4 +1,4 @@
-package com.numq.ecommerce.ui.theme
+package com.numq.ecommerce.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

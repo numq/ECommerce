@@ -8,7 +8,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import com.numq.ecommerce.navigation.Navigation
-import com.numq.ecommerce.ui.theme.ECommerceTheme
+import com.numq.ecommerce.theme.ECommerceTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
