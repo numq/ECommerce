@@ -1,4 +1,4 @@
-package com.numq.fooddeliveryclient.viewmodel
+package com.numq.ecommerce.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
