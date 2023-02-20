@@ -1,7 +1,7 @@
 package com.numq.ecommerce.di
 
 import android.content.Context
-import com.numq.ecommerce.config.Configuration
+import com.numq.ecommerce.configuration.Configuration
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
