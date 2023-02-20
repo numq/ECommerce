@@ -1,4 +1,4 @@
-package com.numq.fooddeliveryclient.keyboard
+package com.numq.ecommerce.keyboard
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
