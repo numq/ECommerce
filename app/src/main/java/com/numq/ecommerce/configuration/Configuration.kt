@@ -1,4 +1,4 @@
-package com.numq.ecommerce.config
+package com.numq.ecommerce.configuration
 
 object Configuration {
     const val GATEWAY_HOSTNAME = "192.168.1.67"
