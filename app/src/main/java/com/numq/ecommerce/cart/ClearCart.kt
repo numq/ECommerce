@@ -5,6 +5,6 @@ import javax.inject.Inject
 
 class ClearCart @Inject constructor(
     private val repository: CartRepository
-) : UseCase<String, Unit>() {
+) : UseCase<String, String>() {
     override suspend fun execute(arg: String) = repository.clearCart(arg)
 }
